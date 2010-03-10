@@ -12,17 +12,17 @@ import sys
 
 
 def Run():
-	test_runner = module_test_runner.ModuleTestRunner(asXML='-xml' in sys.argv)
-	test_runner.modules = [server_tests]
-	test_runner.RunAllTests()
+  test_runner = module_test_runner.ModuleTestRunner(asXML='-xml' in sys.argv)
+  test_runner.modules = [server_tests]
+  test_runner.RunAllTests()
 
 if __name__ == '__main__':
-	logging.basicConfig(level = logging.DEBUG)
+  logging.basicConfig(level = logging.DEBUG)
 
-	tests = filter(lambda x:x[0] != '-', sys.argv[1:])
-	if len(tests) > 0:
-		runner = unittest.TextTestRunner(verbosity=3)
-		for a in tests:
-			runner.run(unittest.defaultTestLoader.loadTestsFromName(a, module=server_tests))
-	else:
-		Run()
+  tests = filter(lambda x:x[0] != '-', sys.argv[1:])
+  if len(tests) > 0:
+    runner = unittest.TextTestRunner(verbosity=3)
+    for a in tests:
+      runner.run(unittest.defaultTestLoader.loadTestsFromName(a, module=server_tests))
+  else:
+    Run()
